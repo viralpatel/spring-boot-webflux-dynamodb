@@ -22,6 +22,8 @@ public class Routes {
     RouterFunction<ServerResponse> customers() {
         return route(GET("/customers"), customerService::listCustomers)
                 .andRoute(POST("/customers"), customerService::createCustomer)
+                .andRoute(GET("/customers/{customerId}"), customerService::getCustomer)
+                .andRoute(PUT("/customers/{customerId}"), customerService::updateCustomer)
                 .andRoute(DELETE("/customers/{customerId}"), customerService::deleteCustomer);
     }
 }

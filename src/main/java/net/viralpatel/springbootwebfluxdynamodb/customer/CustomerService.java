@@ -37,4 +37,19 @@ public class CustomerService {
         return customerRepository.deleteCustomer(customerId)
                 .flatMap(customer -> ServerResponse.ok().build());
     }
+
+    public Mono<ServerResponse> getCustomer(ServerRequest serverRequest) {
+        String customerId = serverRequest.pathVariable("customerId");
+
+        return customerRepository.getCustomer(customerId)
+                .flatMap(customer -> ServerResponse.ok().body(BodyInserters.fromValue(customer)));
+    }
+
+    public Mono<ServerResponse> updateCustomer(ServerRequest serverRequest) {
+        String customerId = serverRequest.pathVariable("customerId");
+
+        return serverRequest.bodyToMono(Customer.class)
+                .flatMap(customer -> customerRepository.updateCustomer(customerId, customer))
+                .flatMap(customer -> ServerResponse.ok().build());
+    }
 }

@@ -1,0 +1,5 @@
+
+application:
+    dynamodb:
+        endpoint: http://localhost:8000
+        customer_table: customers
