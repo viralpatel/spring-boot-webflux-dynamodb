@@ -12,7 +12,8 @@ import java.net.URI;
 public class DynamoDBConfig {
 
     @Bean
-    public DynamoDbAsyncClient dynamoDbAsyncClient(@Value("${application.dynamodb.endpoint}") String dynamoDBEndpoint) {
+    public DynamoDbAsyncClient dynamoDbAsyncClient(
+            @Value("${application.dynamodb.endpoint}") String dynamoDBEndpoint) {
         return DynamoDbAsyncClient.builder()
                 .endpointOverride(URI.create(dynamoDBEndpoint))
                 .credentialsProvider(DefaultCredentialsProvider.builder().build())

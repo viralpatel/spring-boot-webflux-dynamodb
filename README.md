@@ -8,17 +8,34 @@ A reference implementation for Spring Boot Webflux integration with AWS DynamoDB
 4. AWS SDK 2.10.40
 
 ### Running AWS DynamoDB locally without Docker
-1. Download the AWS DynamoDB Local JAR
-2. Run the local dynamodb
+Follow the steps at https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html
+
+1. Download the AWS DynamoDB Local JAR from above link and unzip it
+
+2. Run the local dynamodb jar
     
-    `$ java -jar `
+    ```
+    java -Djava.library.path=./DynamoDBLocal_lib/ 
+        -jar DynamoDBLocal.jar
+    ```
+   
 3. Create customer table in dynamodb.
 
-    `$ aws dynamodb create-table `
+    ```
+    aws dynamodb create-table 
+     	--table-name customers 
+     	--attribute-definitions AttributeName=customerId,AttributeType=S 
+     	--key-schema AttributeName=customerId,KeyType=HASH 
+     	--provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 
+     	--endpoint-url http://localhost:8000
+    ```
 
 4. Verify the table is created.     
     
-    `aws dynamodb list-tables --endpoint-url http://localhost:8000`
+    ```
+     aws dynamodb list-tables 
+       	--endpoint-url http://localhost:8000
+    ```
     
     Output:
     ``` 
