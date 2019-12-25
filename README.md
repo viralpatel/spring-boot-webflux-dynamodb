@@ -53,4 +53,4 @@ Follow the steps at https://docs.aws.amazon.com/amazondynamodb/latest/developerg
 
 
 ## Tutorial
-[Spring Boot Webflux DynamoDB Tutorial](https://www.viralpatel.net/spring-boot-webflux-dynamodb-example/)
+[Spring Boot Webflux DynamoDB Tutorial](https://www.viralpatel.net/spring-boot-webflux-dynamodb/)
