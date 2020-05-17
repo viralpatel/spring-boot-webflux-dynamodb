@@ -1,5 +1,6 @@
 
 application:
+    region: ap-southeast-2
     dynamodb:
         endpoint: http://localhost:8000
         customer_table: customers
